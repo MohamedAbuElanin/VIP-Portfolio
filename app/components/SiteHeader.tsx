@@ -3,22 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export default function SiteHeader({ locale }: { locale: string }) {
   const pathname = usePathname();
   const ar = locale === "ar";
   const other = ar ? "en" : "ar";
-  const [dark, setDark] = useState(() => typeof window !== "undefined" && localStorage.getItem("theme") === "dark");
+  const [dark, setDark] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const saved = localStorage.getItem("theme");
     const value = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.dataset.theme = value ? "dark" : "light";
+    const frame = window.requestAnimationFrame(() => setDark(value));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const toggleTheme = () => {
-    const value = !dark;
+    const value = document.documentElement.dataset.theme !== "dark";
     setDark(value);
     localStorage.setItem("theme", value ? "dark" : "light");
     document.documentElement.dataset.theme = value ? "dark" : "light";
@@ -44,7 +46,13 @@ export default function SiteHeader({ locale }: { locale: string }) {
       </nav>
       <div className="header-actions">
         <Link className="locale-switch" href={replaceLocale}>{other.toUpperCase()}</Link>
-        <button className="icon-button" onClick={toggleTheme} aria-label={ar ? "تغيير المظهر" : "Toggle theme"}>
+        <button
+          className="icon-button"
+          onClick={toggleTheme}
+          aria-label={ar ? "تغيير المظهر" : "Toggle theme"}
+          aria-pressed={dark}
+          title={dark ? (ar ? "التبديل إلى الوضع الفاتح" : "Switch to light mode") : (ar ? "التبديل إلى الوضع الداكن" : "Switch to dark mode")}
+        >
           {dark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
       </div>

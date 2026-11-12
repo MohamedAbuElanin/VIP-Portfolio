@@ -27,8 +27,8 @@ export default function SiteHeader({ locale }: { locale: string }) {
   };
 
   const links = ar
-    ? [["الرئيسية", ""], ["من أنا", "about"], ["المشاريع", "projects"], ["الخدمات", "services"], ["الخبرات", "experience"], ["تواصل", "contact"]]
-    : [["Home", ""], ["About", "about"], ["Projects", "projects"], ["Services", "services"], ["Experience", "experience"], ["Contact", "contact"]];
+    ? [["الرئيسية", ""], ["من أنا", "about"], ["المشاريع", "projects"], ["المهارات", "skills"], ["الخدمات", "services"], ["الخبرات", "experience"], ["تواصل", "contact"]]
+    : [["Home", ""], ["About", "about"], ["Projects", "projects"], ["Skills", "skills"], ["Services", "services"], ["Experience", "experience"], ["Contact", "contact"]];
 
   const replaceLocale = pathname.replace(/^\/(ar|en)/, `/${other}`);
 

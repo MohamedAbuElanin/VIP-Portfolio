@@ -81,7 +81,7 @@ footer{padding:42px clamp(24px,8vw,130px);background:#17191a;color:#d9d8d2;displ
 .footer-links{justify-self:end;display:flex;align-items:center;flex-wrap:wrap;gap:12px 25px;font-size:13px}
 footer>p{font-size:12px;color:#858a8b}
 .social-links{min-width:0}
-.social-links>div{display:flex;align-items:center;gap:9px}
+.social-links>div{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .social-links a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #444;background:rgba(255,255,255,.04);transition:background .2s,transform .2s}
 .social-links a:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .social-links a svg{width:18px;height:18px}

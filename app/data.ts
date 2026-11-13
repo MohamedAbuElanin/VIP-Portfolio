@@ -18,6 +18,7 @@ export const socialLinks = [
   { name: "Facebook", href: "https://www.facebook.com/mohamed.osman.abu.al.anin/" },
   { name: "GitHub", href: "https://github.com/MohamedAbuElanin" },
   { name: "TikTok", href: "https://www.tiktok.com/@bidaya_tech" },
+  { name: "Discord", href: "https://discord.gg/kSar6j4Xx" },
 ];
 
 export const projects = [
